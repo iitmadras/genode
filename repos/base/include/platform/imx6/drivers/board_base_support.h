@@ -14,10 +14,10 @@
  * under the terms of the GNU General Public License version 2.
  */
 
-#ifndef _DRIVERS__BOARD_BASE_H_
-#define _DRIVERS__BOARD_BASE_H_
+#ifndef _INCLUDE__PLATFORM__IMX6__DRIVERS__BOARD_BASE_SUPPORT_H_
+#define _INCLUDE__PLATFORM__IMX6__DRIVERS__BOARD_BASE_SUPPORT_H_
 
-namespace Genode
+namespace Imx6
 {
 	/**
 	 * i.MX6 motherboard
@@ -25,20 +25,12 @@ namespace Genode
 	struct Board_base;
 }
 
-struct Genode::Board_base
+struct Imx6::Board_base
 {
 	enum {
-		/* normal RAM */
-		RAM0_BASE = 0x10000000,
-		RAM0_SIZE = 0x80000000,
-
 		/* device IO memory */
 		MMIO_BASE = 0x00000000,
 		MMIO_SIZE = 0x10000000,
-
-		UART_1_IRQ       = 58,
-		UART_1_MMIO_BASE = 0x02020000,
-		UART_1_MMIO_SIZE = 0x00004000,
 
 		/* timer */
 		EPIT_2_IRQ       = 89,
@@ -59,9 +51,9 @@ struct Genode::Board_base
 		/* CPU cache */
 		CACHE_LINE_SIZE_LOG2 = 5,
 
-		/* wether board provides ARM security extension */
+		/* whether board provides ARM security extension */
 		SECURITY_EXTENSION = 1,
 	};
 };
 
-#endif /* _DRIVERS__BOARD_BASE_H_ */
+#endif /* _INCLUDE__PLATFORM__IMX6__DRIVERS__BOARD_BASE_SUPPORT_H_ */

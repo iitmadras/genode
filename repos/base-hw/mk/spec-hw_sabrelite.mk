@@ -1,8 +1,9 @@
 #
-# \brief  Build configurations for 'base-hw' on WandBoard Quad
+# \brief  Build configurations for 'base-hw' on SABRE Lite
 # \author Nikolay Golikov <nik@ksyslabs.org>
 # \author Josef Soentgen
 # \author Martin Stein
+# \author Praveen Srinivas (IIT Madras, India)
 # \date   2014-02-25
 #
 
@@ -16,7 +17,7 @@ NR_OF_CPUS = 1
 LD_TEXT_ADDR ?= 0x10001000
 
 # add repository relative include paths
-REP_INC_DIR += include/platform/wand_quad
+REP_INC_DIR += include/platform/sabrelite
 
 # include implied specs
 include $(call select_from_repositories,mk/spec-hw.mk)

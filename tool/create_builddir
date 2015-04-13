@@ -35,6 +35,7 @@ usage:
 	@echo "                  'hw_usb_armory'"
 	@echo "                  'hw_wand_quad'"
 	@echo "                  'hw_sabrelite'"
+	@echo "                  'hw_sabrelite_tz'"
 	@echo "                  'hw_arndale'"
 	@echo "                  'hw_odroid_xu'"
 	@echo "                  'hw_rpi'"
@@ -245,6 +246,10 @@ hw_wand_quad::
 
 hw_sabrelite::
 	@echo "SPECS = genode hw_sabrelite" > $(BUILD_DIR)/etc/specs.conf
+	@echo "SPECS += perf_counter" >> $(BUILD_DIR)/etc/specs.conf
+	
+hw_sabrelite_tz::
+	@echo "SPECS = genode hw_sabrelite_tz" > $(BUILD_DIR)/etc/specs.conf
 	@echo "SPECS += perf_counter" >> $(BUILD_DIR)/etc/specs.conf
 
 hw_arndale::

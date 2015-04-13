@@ -33,7 +33,9 @@ struct Genode::Board_base : Imx6::Board_base
 	enum {
 		/* normal RAM */
 		RAM0_BASE = 0x10000000,
-		RAM0_SIZE = 0x80000000,
+		RAM0_SIZE = 0x30000000,
+		RAM1_BASE = 0x40000000,
+		RAM1_SIZE = 0x40000000,
 
 		/* UART */
 		UART_1_IRQ       = 58,

@@ -227,6 +227,11 @@ class Genode::Pic
 		void init_cpu_local();
 
 		/**
+		 * Mark interrupt 'i' unsecure
+		 */
+		void unsecure(unsigned const i);
+
+		/**
 		 * Try to take an IRQ and return wether it was successful
 		 *
 		 * \param irq_id  contains kernel name of taken IRQ on success

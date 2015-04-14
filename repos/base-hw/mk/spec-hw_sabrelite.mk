@@ -14,7 +14,7 @@ SPECS += hw platform_imx6
 NR_OF_CPUS = 1
 
 # set address where to link the text segment at
-LD_TEXT_ADDR ?= 0x10001000
+LD_TEXT_ADDR ?= 0x30001000
 
 # add repository relative include paths
 REP_INC_DIR += include/platform/sabrelite

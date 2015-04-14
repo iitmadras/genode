@@ -68,8 +68,12 @@ struct Imx6::Board_base
 		OCRAM_SIZE   =  0x1000,
 
 		/* CSU */
-		CSU_BASE           = 0x021c0000,
-		CSU_SIZE           = 0x00001000,
+		CSU_BASE = 0x021c0000,
+		CSU_SIZE = 0x00001000,
+
+		/* TrustZone Address Space Controller */
+		TZASC1_BASE = 0x021d0000,
+		TZASC1_SIZE = 0x00001000,
 
 		/* CPU */
 		CORTEX_A9_PRIVATE_MEM_BASE  = 0x00a00000,

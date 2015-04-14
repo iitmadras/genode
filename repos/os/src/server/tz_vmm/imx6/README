@@ -1,0 +1,21 @@
+I assume you're trying to activate the TZASC of the i.mx6.I tried to enable TZASC using IOMUX register but I've had some issues with this myself. In the end I never really managed to make it work using the IOMUX (it also stopped executing when I tried to change the Gpr9 register) but it's possible to enable it using fuse programming. If you are actually trying to enable the TZASC and are willing to blow a fuse to do so you can execute "fuse prog 0 6 0x10000000" in uboot.
+
+This will blow the fuse and automatically enable the TZASC each time you reset the board. I had to wait some time before my board really worked 100% after executing that command so keep that in mind if something funky happens right after blowing the fuse.
+
+you can find that the "fuse prog" command can be used to program the fuses in a certain bank at a certain word.
+Now how do we find this bank and word?
+
+In the fusemap of the i.mx6 reference manual we can see that the TZASC_ENABLE fuse is located at 0x460.
+
+With this address we can find the bank and word. We start with the following equation:
+(address - 0x400) / 10 = (0x460 - 0x400) / 10 = 6
+
+We take this 6 and go for the next equation:
+(answer to previous)/8 = 6/8 = 0
+Since we're working with discreet values and rounding down we find 0. This is the value of the fuse bank. The remainder of the division is the word. So we find 0 6 for the <bank> <word> needed by fuse prog.
+
+Now back in the fuse map we see that the TZASC_ENABLE fuse is at position 28 of the word so we have to change the 28th bit of the word to a 1. Since fuses are one time programmable only, you can leave all the other fuses at 0 during programming. The ones that are at 1 won't change and you don't really want to blow any fuses accidentally.
+This leaves us with the hexadecimal value of 0x10000000 to program to the word.
+
+So "fuse prog 0 6 0x10000000" blows the TZASC_ENABLE fuse at bank 0 word 6.
+

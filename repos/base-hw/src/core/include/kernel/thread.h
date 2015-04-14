@@ -101,6 +101,11 @@ class Kernel::Thread
 		 * Return wether this is a core thread
 		 */
 		bool _core() const;
+		
+		/**
+		 * Switch from an Normal world state to the Secure world
+		 */
+		void _call_switch_nw_sw();
 
 		/**
 		 * Switch from an inactive state to the active state

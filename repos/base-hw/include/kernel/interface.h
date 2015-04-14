@@ -47,7 +47,7 @@ namespace Kernel
 	constexpr Call_arg call_id_print_char()           { return 11; }
 	constexpr Call_arg call_id_update_data_region()   { return 12; }
 	constexpr Call_arg call_id_update_instr_region()  { return 13; }
-
+	constexpr Call_arg call_id_switch_nw_sw() 	  { return 14; }
 
 	/*****************************************************************
 	 ** Kernel call with 1 to 6 arguments                           **
@@ -93,7 +93,13 @@ namespace Kernel
 		call(call_id_pause_current_thread());
 	}
 
-
+	/**
+	* Switch the execution from Normal World to Secure world (TrustZone NS)
+	*/
+	inline void switch_nw_sw() 
+	{
+		call(call_id_switch_nw_sw());
+	}
 	/**
 	 * Cancel blocking of a thread of the current domain if possible
 	 *

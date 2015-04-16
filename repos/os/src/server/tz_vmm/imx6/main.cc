@@ -64,6 +64,14 @@ class Vmm::Vmm : public Thread<8192>
 			case FRAMEBUFFER:
 			case INPUT:
 				break;
+			case 0x10000:
+				PERR("Value from the normal world");
+				if(_vm->state()->r1==0x500)
+				   _vm->state()->r1=0x100;
+				else
+				   _vm->state()->r1=0x200;
+				_vm->run();
+				break;
 			default:
 				PERR("Unknown hypervisor call!");
 				_vm->dump();

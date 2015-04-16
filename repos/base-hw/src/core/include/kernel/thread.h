@@ -106,6 +106,8 @@ class Kernel::Thread
 		 * Switch from an Normal world state to the Secure world
 		 */
 		void _call_switch_nw_sw();
+		
+		void _call_switch_nw_sw_arg();
 
 		/**
 		 * Switch from an inactive state to the active state

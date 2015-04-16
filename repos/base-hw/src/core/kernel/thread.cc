@@ -742,12 +742,30 @@ void Thread::_call_ack_signal()
 
 void Thread::_call_switch_nw_sw()
 {
-	register Genode::addr_t _val asm("r0") =user_arg_1();
-	
-	/* SMC call at higher privilege level */
-	asm volatile("dsb; smc #0" ::"r" (_val) :
+        register Genode::addr_t _val asm("r0") = user_arg_1();
+
+        /* SMC call at higher privilege level */
+        asm volatile("dsb; smc #0" ::"r" (_val) : 
                     "memory", "cc", "r1", "r2", "r3", "r4", "r5",
                      "r6", "r7", "r8", "r9", "r10", "r11");
+             
+}
+
+void Thread::_call_switch_nw_sw_arg()
+{
+	register Genode::addr_t _val asm("r0") = user_arg_1();
+	
+	/* SMC call at higher privilege level */
+	asm volatile("dsb;" ::"r" (_val) : 
+                    "memory", "cc", "r1", "r2", "r3", "r4", "r5",
+                     "r6", "r7", "r8", "r9", "r10", "r11");
+                     
+        register Genode::addr_t _val1 asm("r1") = user_arg_2();
+        
+        asm volatile("dsb; smc #0" ::"r" (_val1) : 
+                    "memory", "cc", "r0", "r2", "r3", "r4", "r5",
+                     "r6", "r7", "r8", "r9", "r10", "r11");
+
 }
 
 void Thread::_call_kill_signal_context()
@@ -849,6 +867,7 @@ void Thread::_call()
 	case call_id_ack_signal():           _call_ack_signal(); return;
 	case call_id_print_char():           _call_print_char(); return;
 	case call_id_switch_nw_sw():	     _call_switch_nw_sw();return;
+	case call_id_switch_nw_sw_arg():     _call_switch_nw_sw_arg();return;
 	default:
 		/* check wether this is a core thread */
 		if (!_core()) {

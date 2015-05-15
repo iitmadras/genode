@@ -1,0 +1,11 @@
+LICENSE := compiler-rt
+DOWNLOADS := compiler-rt.svn
+VERSION := 1.7.16
+
+URL(compiler-rt) := https://llvm.org/svn/llvm-project/compiler-rt/trunk
+REV(compiler-rt) := 232022
+DIR(compiler-rt) := src/lib/compiler-rt
+
+DIRS := include/
+
+DIR_CONTENT(include) := src/lib/compiler-rt/include/*

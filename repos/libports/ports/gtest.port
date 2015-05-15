@@ -1,0 +1,17 @@
+#
+#	Author : Paramesh
+#
+
+LICENSE   := GPLv2
+VERSION   := svn
+DOWNLOADS := gtest-svn.svn
+
+URL(gtest-svn) := http://googletest.googlecode.com/svn/trunk/
+DIR(gtest-svn) := src/gtest
+REV(gtest-svn) :=707 
+
+
+
+DIRS := include/
+
+DIR_CONTENT(include) := src/gtest/include/*

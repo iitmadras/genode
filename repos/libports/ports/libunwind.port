@@ -1,0 +1,11 @@
+LICENSE := unknown
+DOWNLOADS := libunwind.git
+VERSION := 1.0
+
+URL(libunwind) := git://git.sv.gnu.org/libunwind.git
+REV(libunwind) := 59c197566ff913dcbe0d4213a142ebf54290ad47
+DIR(libunwind) := src/lib/libunwind
+
+DIRS := include/
+
+DIR_CONTENT(include) := src/lib/libunwind/include/*

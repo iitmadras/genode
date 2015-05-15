@@ -1,0 +1,11 @@
+LICENSE := unknown
+DOWNLOADS := libcxxabi.svn
+VERSION := 1.7.16
+
+URL(libcxxabi) := http://llvm.org/svn/llvm-project/libcxxabi/trunk/
+REV(libcxxabi) := 231794
+DIR(libcxxabi) := src/lib/libcxxabi
+
+DIRS := include/
+
+DIR_CONTENT(include) := src/lib/libcxxabi/include/*

@@ -1,0 +1,11 @@
+LICENSE := unknown
+DOWNLOADS := libcxx.svn
+VERSION := 1.7.16
+
+URL(libcxx) := http://llvm.org/svn/llvm-project/libcxx/trunk/
+REV(libcxx) := 231907
+DIR(libcxx) := src/lib/libcxx
+
+DIRS := include/
+
+DIR_CONTENT(include) := src/lib/libcxx/include/*

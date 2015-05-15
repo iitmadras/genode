@@ -1,0 +1,50 @@
+build "core init test/libports/bionic"
+
+create_boot_directory
+
+install_config {
+<config>
+	<parent-provides>
+		<service name="ROM"/>
+		<service name="RAM"/>
+		<service name="IRQ"/>
+		<service name="IO_MEM"/>
+		<service name="IO_PORT"/>
+		<service name="CAP"/>
+		<service name="PD"/>
+		<service name="RM"/>
+		<service name="CPU"/>
+		<service name="LOG"/>
+	</parent-provides>
+	<default-route>
+		<any-service> <parent/> <any-child/> </any-service>
+	</default-route>
+	<start name="test-bionic">
+		<resource name="RAM" quantum="4M"/>
+		<config>
+			<libc stdout="/dev/log">
+				<vfs> <dir name="dev"> <log/> </dir> </vfs>
+			</libc>
+		</config>
+		
+	</start>
+</config>
+}
+
+build_boot_image {
+	core init test-bionic
+	ld.lib.so 
+	bionic.lib.so 
+	bionic_libstdc++_so.lib.so
+	bionic_libm_so.lib.so
+	bionic_libc_libc_so.lib.so
+	bionic_libdl.lib.so
+	 	
+}
+
+append qemu_args " -nographic -m 64 "
+run_genode_until "--- returning from main ---" 10
+
+#run_genode_until forever
+
+#puts "{init -> test-libc} Does printf work?"

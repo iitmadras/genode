@@ -1,0 +1,22 @@
+LICENSE   := BSD
+VERSION   := 1.2
+DOWNLOADS := bionic.archive
+
+URL(bionic) :=file:///home/paramesh/bionic.tar.gz
+SHA(bionic) :=b00cf0d7eb65ef3edcfd1c963dcb11200a5b0b31
+DIR(bionic) := src/lib/bionic
+ 
+DIRS     := include/libc  include/libc/arch-x86_64 include/libm include/libstdc++
+
+DIR_CONTENT(include/libc) := src/lib/bionic/libc/include/* \
+			src/lib/bionic/libc/arch-common/* \
+			src/lib/bionic/libc/kernel/uapi/*
+ 
+
+DIR_CONTENT(include/libc/arch-x86_64) := src/lib/bionic/libc/arch-x86_64/include/*
+
+DIR_CONTENT(include/libm) := src/lib/bionic/libm/include/* 
+
+DIR_CONTENT(include/libstdc++) := src/lib/bionic/libstdc++/include/* \
+
+

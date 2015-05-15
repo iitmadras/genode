@@ -1,0 +1,13 @@
+LICENSE   := unknown
+VERSION   := 5.2.1
+DOWNLOADS := STLport-5.2.1.archive
+
+URL(STLport-5.2.1) :=file:///home/paramesh/Downloads/STLport-5.2.1.tar.bz2
+SHA(STLport-5.2.1) := 98518859f538192245ab838d56107992b21ac469
+DIR(STLport-5.2.1) := src/lib/stlport
+ 
+DIRS     := include 
+
+DIR_CONTENT(include) := \
+	src/lib/stlport/stlport/*
+    	
